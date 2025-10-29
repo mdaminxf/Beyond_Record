@@ -48,7 +48,6 @@ interface CourseEnrollmentModalProps {
 }
 
 export function CourseEnrollmentModal({ isOpen, onClose, onEnrollmentUpdate }: CourseEnrollmentModalProps) {
-  const [loading, setLoading] = useState(false)
   const [coursesLoading, setCoursesLoading] = useState(true)
   const [error, setError] = useState("")
   const [searchTerm, setSearchTerm] = useState("")
