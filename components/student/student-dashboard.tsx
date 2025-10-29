@@ -17,8 +17,6 @@ import {
   Clock,
   Target,
   BookOpen,
-  Download,
-  Share2,
   Bell,
   Settings,
   LogOut,
