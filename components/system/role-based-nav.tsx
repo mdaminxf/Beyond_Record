@@ -1,25 +1,38 @@
 "use client"
 
-import type React from "react"
-
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { GraduationCap, User, Users, Building2, FileText, BarChart3, Settings, Bell, LogOut } from "lucide-react"
+import {
+  GraduationCap,
+  User,
+  Users,
+  Building2,
+  FileText,
+  BarChart3,
+  Settings,
+  Bell,
+  LogOut,
+  type LucideProps,
+} from "lucide-react"
 import { authService, type User as UserType } from "@/lib/auth"
 import { notificationService } from "@/lib/notifications"
 import { NotificationCenter } from "@/components/notifications/notification-center"
 import { OfflineIndicator } from "@/components/system/offline-indicator"
+import type { ForwardRefExoticComponent, RefAttributes } from "react"
 
-interface NavItem
-{
-    label: string
-    href: string
-    icon: React.ComponentType<{ className?: string }>
-    roles: ("student" | "faculty" | "admin")[]
+
+interface NavItem {
+  label: string
+  href: string
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >
+  roles: ("student" | "faculty" | "admin")[]
 }
+
 
 const navigationItems: NavItem[] = [
     {
@@ -100,12 +113,11 @@ export function RoleBasedNav()
         authService.logout()
         window.location.href = "/"
     }
+const getFilteredNavItems = React.useCallback(() => {
+  if (!user) return []
+  return navigationItems.filter((item) => item.roles.includes(user.role))
+}, [user])
 
-    const getFilteredNavItems = () =>
-    {
-        if (!user) return []
-        return navigationItems.filter((item) => item.roles.includes(user.role))
-    }
 
     const isActivePath = (href: string) =>
     {
