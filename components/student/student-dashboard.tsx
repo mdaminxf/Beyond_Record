@@ -33,13 +33,7 @@ import { EditProfileModal } from "./edit-profile-modal"
 import { CourseEnrollmentModal } from "./course-enrollment-modal"
 import { AchievementUploadModal } from "./achievement-upload-modal"
 
-function Trophy({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-      <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20.38C20.77 4 21.08 4.32 21.08 4.71C21.08 4.79 21.06 4.87 21.02 4.94L19.27 9.5C19.1 9.86 18.74 10.09 18.35 10.09H17.92V16C17.92 17.1 17.02 18 15.92 18H8.08C6.98 18 6.08 17.1 6.08 16V10.09H5.65C5.26 10.09 4.9 9.86 4.73 9.5L2.98 4.94C2.94 4.87 2.92 4.79 2.92 4.71C2.92 4.32 3.23 4 3.62 4H7ZM9 3V4H15V3H9ZM8.08 16H15.92V10.09H8.08V16ZM5.65 8.09H6.08V9.09H17.92V8.09H18.35L19.38 5H4.62L5.65 8.09Z" />
-    </svg>
-  )
-}
+
 
 export function StudentDashboard() {
   const [user, setUser] = useState(authService.getCurrentUser())
