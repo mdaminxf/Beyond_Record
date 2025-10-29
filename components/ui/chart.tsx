@@ -268,11 +268,18 @@ function ChartLegendContent({
   payload,
   verticalAlign = 'bottom',
   nameKey,
-}: React.ComponentProps<'div'> &
-  Pick<RechartsPrimitive.LegendProps, 'payload' | 'verticalAlign'> & {
-    hideIcon?: boolean
-    nameKey?: string
-  }) {
+}: {
+  className?: string
+  hideIcon?: boolean
+  nameKey?: string
+  verticalAlign?: 'top' | 'bottom' | 'middle'
+  payload?: Array<{
+    value?: string
+    color?: string
+    dataKey?: string
+  }>
+}) {
+
   const { config } = useChart()
 
   if (!payload?.length) return null
