@@ -81,32 +81,29 @@ export function RoleBasedNav()
     const pathname = usePathname()
 
     useEffect(() =>
+{
+    const currentUser = authService.getCurrentUser()
+    setUser(currentUser)
+
+    if (!currentUser) return
+
+    const updateUnreadCount = () =>
     {
-        const currentUser = authService.getCurrentUser()
-        setUser(currentUser)
+        setUnreadCount(notificationService.getUnreadCount(currentUser.id))
+    }
 
-        if (currentUser)
-        {
-            // Update unread count
-            const updateUnreadCount = () =>
-            {
-                setUnreadCount(notificationService.getUnreadCount(currentUser.id))
-            }
+    updateUnreadCount()
 
-            updateUnreadCount()
+    const unsubscribe = notificationService.subscribe(() =>
+    {
+        updateUnreadCount()
+    })
 
-            // Subscribe to notification updates
-            const unsubscribe = notificationService.subscribe(() =>
-            {
-                updateUnreadCount()
-            })
+    notificationService.requestPermission()
 
-            // Request notification permission
-            notificationService.requestPermission()
+    return () => unsubscribe()
+}, [])
 
-            return unsubscribe
-        }
-    }, [])
 
     const handleLogout = () =>
     {
