@@ -30,7 +30,7 @@ interface NavItem {
   icon: ForwardRefExoticComponent<
     Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
   >
-  roles: ("student" | "faculty" | "admin")[]
+  roles: ("student" | "faculty" | "admin" | "institution")[]
 }
 
 
