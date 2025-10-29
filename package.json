@@ -10,6 +10,7 @@
     "seed": "tsx scripts/seedData.ts",
     "seed:institutes": "tsx scripts/seedInstitutes.ts",
     "seed:all": "tsx scripts/seedInstitutes.ts && tsx scripts/seedData.ts"
+    
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
