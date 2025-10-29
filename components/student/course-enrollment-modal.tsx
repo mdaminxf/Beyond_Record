@@ -12,7 +12,6 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { 
   BookOpen, 
   Users, 
-  Clock, 
   Award,
   Search,
   Plus,
