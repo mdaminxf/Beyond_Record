@@ -139,7 +139,9 @@ function ContextMenuCheckboxItem({
   children,
   checked,
   ...props
-}: React.ComponentProps<typeof ContextMenuPrimitive.CheckboxItem>) {
+}: Omit<React.ComponentProps<typeof ContextMenuPrimitive.CheckboxItem>, 'checked'> & {
+  checked?: ContextMenuPrimitive.CheckedState;
+}) {
   return (
     <ContextMenuPrimitive.CheckboxItem
       data-slot="context-menu-checkbox-item"
