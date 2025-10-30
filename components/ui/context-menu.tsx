@@ -6,12 +6,17 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 
+// ---- Define CheckedState manually ----
+type CheckedState = boolean | 'indeterminate'
+
+// ---- Root ----
 function ContextMenu({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Root>) {
   return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
 }
 
+// ---- Trigger ----
 function ContextMenuTrigger({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Trigger>) {
@@ -20,6 +25,7 @@ function ContextMenuTrigger({
   )
 }
 
+// ---- Group ----
 function ContextMenuGroup({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Group>) {
@@ -28,6 +34,7 @@ function ContextMenuGroup({
   )
 }
 
+// ---- Portal ----
 function ContextMenuPortal({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Portal>) {
@@ -36,12 +43,14 @@ function ContextMenuPortal({
   )
 }
 
+// ---- Sub ----
 function ContextMenuSub({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Sub>) {
   return <ContextMenuPrimitive.Sub data-slot="context-menu-sub" {...props} />
 }
 
+// ---- Radio Group ----
 function ContextMenuRadioGroup({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.RadioGroup>) {
@@ -53,6 +62,7 @@ function ContextMenuRadioGroup({
   )
 }
 
+// ---- Sub Trigger ----
 function ContextMenuSubTrigger({
   className,
   inset,
@@ -77,6 +87,7 @@ function ContextMenuSubTrigger({
   )
 }
 
+// ---- Sub Content ----
 function ContextMenuSubContent({
   className,
   ...props
@@ -93,6 +104,7 @@ function ContextMenuSubContent({
   )
 }
 
+// ---- Content ----
 function ContextMenuContent({
   className,
   ...props
@@ -111,6 +123,7 @@ function ContextMenuContent({
   )
 }
 
+// ---- Item ----
 function ContextMenuItem({
   className,
   inset,
@@ -134,13 +147,14 @@ function ContextMenuItem({
   )
 }
 
+// ---- Checkbox Item ----
 function ContextMenuCheckboxItem({
   className,
   children,
   checked,
   ...props
 }: Omit<React.ComponentProps<typeof ContextMenuPrimitive.CheckboxItem>, 'checked'> & {
-  checked?: ContextMenuPrimitive.CheckedState;
+  checked?: CheckedState
 }) {
   return (
     <ContextMenuPrimitive.CheckboxItem
@@ -162,6 +176,7 @@ function ContextMenuCheckboxItem({
   )
 }
 
+// ---- Radio Item ----
 function ContextMenuRadioItem({
   className,
   children,
@@ -186,6 +201,7 @@ function ContextMenuRadioItem({
   )
 }
 
+// ---- Label ----
 function ContextMenuLabel({
   className,
   inset,
@@ -206,6 +222,7 @@ function ContextMenuLabel({
   )
 }
 
+// ---- Separator ----
 function ContextMenuSeparator({
   className,
   ...props
@@ -219,6 +236,7 @@ function ContextMenuSeparator({
   )
 }
 
+// ---- Shortcut ----
 function ContextMenuShortcut({
   className,
   ...props
@@ -235,6 +253,7 @@ function ContextMenuShortcut({
   )
 }
 
+// ---- Exports ----
 export {
   ContextMenu,
   ContextMenuTrigger,
